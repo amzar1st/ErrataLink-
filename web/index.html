@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Verify whether a version-pinned correction changes a citation.">
+<title>ErrataLink | Citation verification</title>
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<header><nav class="wrap"><a class="brand" href="./"><span aria-hidden="true">↳</span> ErrataLink</a><div><a id="contract" hidden>Contract ↗</a><a href="https://github.com/amzar1st/ErrataLink-">Source ↗</a></div></nav></header>
+<main class="wrap">
+<section class="hero"><p class="network">GENLAYER STUDIONET</p><h1>Does this correction<br>change your citation?</h1><p>Check a specific RFC section or a table cell against a pinned correction. Read the finalized verdict and its evidence on GenLayer.</p></section>
+<div class="workspace">
+<section class="card"><h2>Prepare a review</h2>
+<p class="muted">Load a verified RFC notice or try the fictional ridership table.</p>
+<div class="samples" aria-label="Examples"><button data-sample="rfc">RFC 9110</button><button data-sample="affected">Corrected cell</button><button data-sample="unaffected">Other cell</button></div>
+<form id="prepare">
+<div class="pair"><label>Document version<input name="document" required maxlength="12" placeholder="rfc9110"></label><label>Notice ID<input name="notice" required maxlength="8" placeholder="7105"></label></div>
+<label>Citation locator<input name="locator" required maxlength="40" placeholder="B.1 or table:2/east.weekday"></label>
+<label>Notice SHA-256<input name="pin" required pattern="[a-f0-9]{64}" maxlength="64" spellcheck="false"></label>
+<button class="primary">Prepare Studio transaction</button>
+</form>
+<div id="prepared" hidden><p>Use your built-in Studio account. Import the deployed contract by address in <strong>Contracts</strong>, then call <strong>verify</strong> in <strong>Run and Debug</strong> using these four values.</p><ol id="args"></ol><a id="studio" href="https://studio.genlayer.com/contracts" target="_blank" rel="noreferrer">Open GenLayer Studio ↗</a></div>
+<p id="prepare-status" role="status"></p>
+</section>
+<section class="card"><h2>Finalized review</h2><p class="muted">Look up the review ID generated from the four inputs.</p>
+<form id="lookup" class="inline"><label class="visually-hidden" for="review-id">Review ID</label><input id="review-id" required pattern="[a-f0-9]{64}" maxlength="64" placeholder="64-character review ID"><button class="primary">Look up</button></form>
+<p id="review-status" role="status"></p>
+<div id="result" hidden><strong id="verdict" class="verdict"></strong><p id="reason"></p><dl id="details"></dl><div id="sources" class="samples"></div></div>
+<hr>
+<h2>Track a transaction</h2><p class="muted">Paste the GenLayer transaction hash from Studio to follow consensus and finalization.</p>
+<form id="track" class="inline"><label class="visually-hidden" for="tx">Transaction hash</label><input id="tx" required pattern="0x[a-fA-F0-9]{64}" maxlength="66" placeholder="0x…"><button class="primary">Track</button></form>
+<p id="tx-status" role="status"></p><a id="tx-link" hidden>Open receipt ↗</a>
+</section>
+</div>
+</main>
+<footer class="wrap">ErrataLink · Correction applicability on GenLayer</footer>
+</body></html>
